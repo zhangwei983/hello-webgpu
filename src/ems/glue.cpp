@@ -1,5 +1,6 @@
 #include <emscripten/em_js.h>
 #include <emscripten/emscripten.h>
+#include <emscripten.h>
 
 /**
  * \def KEEP_IN_MODULE
@@ -74,6 +75,8 @@ KEEP_IN_MODULE void _glue_main_() {
  * Entry point. Workaround for Emscripten needing an \c async start.
  */
 int main(int /*argc*/, char* /*argv*/[]) {
+	emscripten_log(EM_LOG_CONSOLE, "main() from glue.cpp");
+
 	impl::glue_preint();
 	return 0;
 }
